@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moment 2 - Gissa nummer</title>
+    <link rel="stylesheet" href="css/main.min.css">
+</head>
+
+<body onload="init()">
+
+    <!-- JavaScript Guess a random number copied from https://guess-the-number-project.netlify.app/ -->
+    <main>
+        <img src="images/guess.png" alt="Guees a number" />
+        <div id="welcomeScreen">
+            <h2>Gissa ett nummer <br />mellan 1-100</h2>
+            <section>
+                <p>Välj svårighetsgrad:</p>
+
+                <div class="button-wrapper">
+                    <button onclick="easyMode()">
+                        Lätt: 10 försök
+                    </button>
+                    <button onclick="hardMode()">
+                        Svårt: 5 försök
+                    </button>
+                </div>
+            </section>
+        </div>
+
+        <div id="gameArea">
+            <button id="newGameButton" onclick="newGame()">Ny omgång</button>
+            <section>
+                <h3 id="textOutput">Din gissning:</h3>
+
+                <!-- autocomplete="off" for finishing touch to remove drop down of previous guesses -->
+                <input type="number" id="inputBox" min="1" max="100" onchange="compareGuess()" autocomplete="off" />
+            </section>
+
+            <section>
+                <p>Nuvarande intervall:</p>
+                <span id="rangeOutput"> 1 - 100 </span>
+                <div id="range">
+                    <span id="low"></span>
+                    <span id="space"></span>
+                    <span id="high"></span>
+                </div>
+            </section>
+
+            <section class="stats">
+                <div class="info">
+                    <p>Antal tidigare försök:</p>
+                    <span id="attempts">0</span>
+                </div>
+                <div class="info">
+                    <p>Dina tidigare gissningar:</p>
+                    <span id="guesses">-</span>
+                </div>
+            </section>
+        </div>
+        <!-- /container -->
+    </main>
+    <script src="js/main.min.js"></script>
+</body>
+
+</html>
