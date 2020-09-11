@@ -10,7 +10,7 @@ Uppgiften går ut på att skapa automatiseringsprocesser med hjälp av verktygen
 * gulp-uglify-es - Minifierar JavaScript och tar bort allt onödigt innehåll.
 * gulp-clean-css - Minifierar css och tar bort allt onödigt innehåll
 * gulp-image - Klarar att komprimera många olika bildformat.
-* gulp-sourcemaps - Visar frpn vilken fil koden härstammar.
+* gulp-sourcemaps - Visar från vilken fil koden härstammar.
 
 Efter att ha installerat ovan paket (npm install) är det bara att skriva gulp i terminalen för att samtliga kommandon ska köras.
 Systemet kommer då först att köra ett antal parallella processer:
