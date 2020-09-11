@@ -10,6 +10,7 @@ Uppgiften går ut på att skapa automatiseringsprocesser med hjälp av verktygen
 * gulp-uglify-es - Minifierar JavaScript och tar bort allt onödigt innehåll.
 * gulp-clean-css - Minifierar css och tar bort allt onödigt innehåll
 * gulp-image - Klarar att komprimera många olika bildformat.
+* gulp-sourcemaps - Visar frpn vilken fil koden härstammar.
 
 Efter att ha installerat ovan paket (npm install) är det bara att skriva gulp i terminalen för att samtliga kommandon ska köras.
 Systemet kommer då först att köra ett antal parallella processer:
@@ -20,3 +21,4 @@ Systemet kommer då först att köra ett antal parallella processer:
 * Det sista som händer är att systemet sedan lyssnar på förändringar och kommer automatiskt köra dessa processer varje gång en fil ändras.
 
 Att byta namn på filerna var inget krav för denna uppgift men jag tycker det är snyggt att redan i filnamnet visa att detta är en minifierad fil. Likaså var det inget krav att komprimera bilder men jag tycker det är en oerhört användbar funktion så jag ville testa den.
+Sourcemaps är väldigt användbart vid felsökning och utveckling eftersom det går att se från vilken fil koden kommer ifrån.

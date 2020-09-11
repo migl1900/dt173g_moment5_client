@@ -4,6 +4,7 @@ const rename = require("gulp-rename");
 const uglify = require("gulp-uglify-es").default;
 const cleanCSS = require("gulp-clean-css");
 const image = require("gulp-image");
+const sourcemaps = require("gulp-sourcemaps");
 
 // Paths
 const files = {
@@ -22,18 +23,22 @@ function copyHTML() {
 // Concat and minify js files
 function jsTask() {
     return src(files.jsPath)
-        .pipe(concat("main.js"))
-        .pipe(uglify())
-        .pipe(rename("main.min.js"))
+        .pipe(sourcemaps.init())
+            .pipe(concat("main.js"))
+            .pipe(uglify())
+            .pipe(rename("main.min.js"))
+        .pipe(sourcemaps.write())
         .pipe(dest("pub/js"));
 }
 
 // Concat and minify css files
 function cssTask() {
     return src(files.cssPath)
-        .pipe(concat("main.css"))
-        .pipe(cleanCSS())
-        .pipe(rename("main.min.css"))
+        .pipe(sourcemaps.init())
+            .pipe(concat("main.css"))
+            .pipe(cleanCSS())
+            .pipe(rename("main.min.css"))
+        .pipe(sourcemaps.write())
         .pipe(dest("pub/css"));
 }
 

@@ -3,5 +3,5 @@ body {
     background-color: #efefef;
     width: 90vw;
     margin: 0 auto;
-    background: radial-gradient(var(--inner-gradient), var(--outer-gradient));
+    background-color: #353868;
 }
