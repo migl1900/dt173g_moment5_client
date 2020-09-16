@@ -11,6 +11,7 @@ Uppgiften går ut på att skapa automatiseringsprocesser med hjälp av verktygen
 * gulp-clean-css - Minifierar css och tar bort allt onödigt innehåll
 * gulp-image - Klarar att komprimera många olika bildformat.
 * gulp-sourcemaps - Visar från vilken fil koden härstammar.
+* browser-sync - Skapar en webbserver, öppnar vald rootkatalog och uppdaterar automatiskt webbläsaren vid ändringar.
 
 Efter att ha installerat ovan paket (npm install) är det bara att skriva gulp i terminalen för att samtliga kommandon ska köras.
 Systemet kommer då först att köra ett antal parallella processer:
