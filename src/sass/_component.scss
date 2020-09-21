@@ -7,4 +7,10 @@ button {
     font-family: font(text);
     font-size: font-size(h5);
     text-transform: uppercase;
+    cursor: pointer;
+
+    @include mobile {
+        width: 100%;
+        padding: 0.5em 0;
+    }
 }
