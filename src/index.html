@@ -1,66 +1,62 @@
 <!DOCTYPE html>
+<!--
+    Moment 3 - CSS-preprocessorer och SASS
+    DT173G, Webbutveckling III
+    Michael Glimmerdahl
+    2020-09-21
+-->
 <html lang="sv">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moment 2 - Gissa nummer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kodchasan:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <title>Sassy</title>
     <link rel="stylesheet" href="css/main.min.css">
 </head>
 
-<body onload="init()">
+<body>
 
-    <!-- JavaScript Guess a random number copied from https://guess-the-number-project.netlify.app/ -->
-    <main>
-        <img src="images/guess.png" alt="Guees a number" />
-        <div id="welcomeScreen">
-            <h2>Gissa ett nummer <br />mellan 1-100</h2>
-            <section>
-                <p>Välj svårighetsgrad:</p>
+    <!-- Background fixed position -->
+    <div class="background"></div>
 
-                <div class="button-wrapper">
-                    <button onclick="easyMode()">
-                        Lätt: 10 försök
-                    </button>
-                    <button onclick="hardMode()">
-                        Svårt: 5 försök
-                    </button>
-                </div>
-            </section>
+    <!-- Header with logo and nav -->
+    <header>
+        <a href="#"><div class="logo"></div></a>
+        <div id="hamburgerMenu" class="hamburger-menu active" onClick="toggleMenu()">&#9776;</div>
+        <div id="closeMenu" class="hamburger-menu close-button" onClick="toggleMenu()">&times;</div>
+        <nav id="navMenu">
+            <ul id="menuContent" class="menu-content">
+                <li><a class="current" href="#">Home</a></li>
+                <li><a href="#">Service</a></li>
+                <li><a href="#">Portfolio</a></li>
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main content -->
+    <div class="main">
+        <h1 class="center-text">Lend a helping hand!</h1>
+        <img src="images/index_bike.png" alt="Boy helping smaller boy on bicicle" class="center-image" />
+        <h2>Do you want to make a change?</h2>
+        <p>
+            Do you ever get the feeling you want to make a change but dont know what you can do to get started?
+        </p>
+        <p>
+            In that case you have come to the right place =)
+        </p>
+        <button>More info</button>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            All rights reserved
         </div>
-
-        <div id="gameArea">
-            <button id="newGameButton" onclick="newGame()">Ny omgång</button>
-            <section>
-                <h3 id="textOutput">Din gissning:</h3>
-
-                <!-- autocomplete="off" for finishing touch to remove drop down of previous guesses -->
-                <input type="number" id="inputBox" min="1" max="100" onchange="compareGuess()" autocomplete="off" />
-            </section>
-
-            <section>
-                <p>Nuvarande intervall:</p>
-                <span id="rangeOutput"> 1 - 100 </span>
-                <div id="range">
-                    <span id="low"></span>
-                    <span id="space"></span>
-                    <span id="high"></span>
-                </div>
-            </section>
-
-            <section class="stats">
-                <div class="info">
-                    <p>Antal tidigare försök:</p>
-                    <span id="attempts">0</span>
-                </div>
-                <div class="info">
-                    <p>Dina tidigare gissningar:</p>
-                    <span id="guesses">-</span>
-                </div>
-            </section>
-        </div>
-        <!-- /container -->
-    </main>
+    </footer>
     <script src="js/main.min.js"></script>
 </body>
 

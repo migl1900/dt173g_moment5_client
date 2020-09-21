@@ -1,0 +1,63 @@
+/* Layout specific design */
+.center {
+    margin: 0 auto;
+}
+
+.background {
+    clip-path: polygon(100% 0, 100% 78%, 51% 100%, 0 100%, 0 0);
+    background-color: color(base-background);
+    position: fixed;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+}
+header {
+    position: relative;
+}
+.logo-base {
+    display: inline-block;
+    width: 270px;
+    height: 80px;
+    background-repeat: no-repeat;
+    background-position: 20px 30px;
+}
+
+/* Show right color logo based on $themeColor value */
+@if $themeColor {
+    .logo {
+        @extend .logo-base;
+        background-image: url("../images/logo.png");
+    }
+} @else {
+    .logo {
+        @extend .logo-base;
+        background-image: url("../images/logo_yellow.png");
+    }
+}
+
+.main {
+    @extend .center;
+    max-width: $desktop;
+    padding: 0 1em;
+    p, h2, h3, h4, h5, h6 {
+        text-shadow: 1px 1px color(base-background);
+    }
+}
+.center-image {
+    @extend .center;
+    display: block;
+}
+
+.center-text {
+    text-align: center;
+}
+footer {
+    background-color: color(dark-background);
+}
+.footer-container {
+    @extend .center;
+    max-width: $desktop;
+    color: color(light-text);
+    margin-top: 2em;
+    padding: 2em 1em;
+}

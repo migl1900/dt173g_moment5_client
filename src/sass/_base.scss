@@ -1,0 +1,116 @@
+/* Set color theme based on true or false */
+$themeColor: true;
+$colors: true;
+@if $themeColor {
+    $colors: (
+        base-background: #c4c4c4,
+        dark-background: darken(#c4c4c4, 80%),
+        base-primary: #ffa800,
+        dark-primary: darken(#ffa800, 5%),
+        base-text: #111111,
+        light-text: lighten(#111111, 90%)
+    );
+} @else {
+    $colors: (
+        base-background: #c4c4c4,
+        dark-background: darken(#c4c4c4, 80%),
+        base-primary: #edff00,
+        dark-primary: darken(#edff00, 5%),
+        base-text: #111111,
+        light-text: lighten(#111111, 90%)
+    );
+}
+
+/* Font family variable */
+$font-stack: (
+    header: ('Kodchasan', sans-serif),
+    text: ('Open Sans', sans-serif)
+);
+
+/* Font size varable */
+$font-sizes: (
+    h1: 4em,
+    h2: 3em,
+    h3: 2.5em,
+    h4: 1.8em,
+    h5: 1.4em,
+    h6: 1.2em
+);
+
+/* Breaking points varables */
+$desktop: 1200px;
+$tablet: 768px;
+$mobile: 576px;
+
+/* Functions for easy access to sass maps */
+@function color($color-name) {
+    @return map-get($colors, $color-name);
+}
+
+@function font($font-name) {
+    @return map-get($font-stack, $font-name);
+}
+
+@function font-size($size) {
+    @return map-get($font-sizes, $size);
+}
+
+/* Functions to add breaking point specific code */
+@mixin tablet {
+    @media (min-width: #{$mobile}) and (max-width: #{$tablet}) {
+        @content;
+    }
+}
+
+@mixin mobile {
+    @media (max-width: #{$mobile}) {
+        @content;
+    }
+}
+
+/* Main design elements */
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    background-color: color(dark-background);
+    font-family: font(text);
+    font-size: font-size(h6);
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+h1 {
+    font-family: font(header);
+    font-size: font-size(h1);
+    color: color(light-text);
+    text-transform: uppercase;
+    @include mobile {
+        font-size: font-size(h2);
+    }
+}
+h2 {
+    font-family: font(header);
+    font-size: font-size(h2);
+    @include mobile {
+        font-size: font-size(h3);
+    }
+}
+h3 {
+    font-family: font(header);
+    font-size: font-size(h3);
+}
+h4 {
+    font-family: font(header);
+    font-size: font-size(h4);
+}
+h5 {
+    font-family: font(header);
+    font-size: font-size(h5);
+}
+h6 {
+    font-family: font(header);
+    font-size: font-size(h6);
+}

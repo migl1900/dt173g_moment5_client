@@ -1,0 +1,10 @@
+/* Styling page components */
+button {
+    background-color: color(base-primary);
+    border: none;
+    padding: 0.7em 4em;
+    border-radius: 4px;
+    font-family: font(text);
+    font-size: font-size(h5);
+    text-transform: uppercase;
+}

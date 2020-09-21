@@ -6,11 +6,14 @@ const cleanCSS = require("gulp-clean-css");
 const image = require("gulp-image");
 const sourcemaps = require("gulp-sourcemaps");
 const browserSync = require('browser-sync').create();
+const sass = require('gulp-sass'); 
+sass.compiler = require('node-sass');
 
 // Paths to source files
 const files = {
     htmlPath: "src/**/*.html",
     cssPath: "src/**/*.css",
+    sassPath: "src/**/*.scss",
     jsPath: "src/**/*.js",
     imagePath: "src/images/*"
 }
@@ -46,6 +49,17 @@ function cssTask() {
         .pipe(sourcemaps.init())
             .pipe(concat("main.css"))
             .pipe(cleanCSS())
+            .pipe(rename("pureCss.min.css"))
+        .pipe(sourcemaps.write())
+        .pipe(dest("pub/css"))
+}
+
+// Compile scss to css and minify css code
+function sassTask() {
+    return src(files.sassPath)
+        .pipe(sourcemaps.init())
+            .pipe(sass().on("error", sass.logError))
+            .pipe(cleanCSS())
             .pipe(rename("main.min.css"))
         .pipe(sourcemaps.write())
         .pipe(dest("pub/css"))
@@ -68,6 +82,7 @@ function watchTask() {
     watch(files.htmlPath, copyHTML);
     watch(files.jsPath, jsTask);
     watch(files.cssPath, cssTask);
+    watch(files.sassPath, sassTask);
     watch(files.imagePath, imageTask);
     watch([pubFiles.htmlPath, pubFiles.jsPath, pubFiles.cssPath, pubFiles.imagePath]).on("change", browserSync.reload);
 }
@@ -75,6 +90,6 @@ function watchTask() {
 
 // Default tasks
 exports.default = series(
-    parallel(copyHTML, jsTask, cssTask, imageTask),
+    parallel(copyHTML, jsTask, cssTask, sassTask, imageTask),
     watchTask
 );
