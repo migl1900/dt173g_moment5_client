@@ -1,25 +1,16 @@
 # Node.js & Gulp
 ### DT173G Moment 2
 ---
-Detta är andra uppgiften i kursen [Webbutveckling III](https://www.miun.se/utbildning/kursplaner-och-utbildningsplaner/Sok-kursplan/kursplan/?kursplanid=18690) på mittuniversitet HT -20.
+Detta är tredje uppgiften i kursen [Webbutveckling III](https://www.miun.se/utbildning/kursplaner-och-utbildningsplaner/Sok-kursplan/kursplan/?kursplanid=18690) på mittuniversitet HT -20.
 
-Uppgiften går ut på att skapa automatiseringsprocesser med hjälp av verktygen i Gulp och dess tillägg. Syftet är att lära oss hur man kan automatisera olika processer som att slå samman filer, ta bort onödig information och komprimera innehållet innan publicering för att de ska laddas fortare. För att lösa denna uppgift har jag använt ett antal olika paket:
-* gulp - Är själva ramverket för att kunna automatisera processer.
-* gulp-concat - slår samman olika filer till en.
-* gulp-rename - Används för att döpa om filer.
-* gulp-uglify-es - Minifierar JavaScript och tar bort allt onödigt innehåll.
-* gulp-clean-css - Minifierar css och tar bort allt onödigt innehåll
-* gulp-image - Klarar att komprimera många olika bildformat.
-* gulp-sourcemaps - Visar från vilken fil koden härstammar.
-* browser-sync - Skapar en webbserver, öppnar vald rootkatalog och uppdaterar automatiskt webbläsaren vid ändringar.
+Uppgiften går ut på att dels skapa automatiseringsprocesser i Gulp för att hantera sass-filer och dels på att skapa en layout med hjälp av sass. Syftet är att lära oss hur man kan automatisera hanteringen av sass inklusive kompilering för att sedan se resultatet live medans vi utvecklar.
 
-Efter att ha installerat ovan paket (npm install) är det bara att skriva gulp i terminalen för att samtliga kommandon ska köras.
-Systemet kommer då först att köra ett antal parallella processer:
-* Kopiera alla html-filer till publiceringskatalogen.
-* Sammanfoga alla JavaScriptsfiler till en, minifiera och rensa filerna på allt onödigt innehåll, döp om filen med tillägget .min och slutligen kopiera den färdiga filen till publiceringskatalogen.
-* Samma sak med css-filerna; sammanfoga, minifiera, byt namn samt kopiera till rätt publiceringskatalog.
-* Alla bilder som finns i katalogen images komprimeras och kopieras till motsvarande publiceringskatalog.
-* Det sista som händer är att systemet sedan lyssnar på förändringar och kommer automatiskt köra dessa processer varje gång en fil ändras.
+Jag skapat en layout med hjälp av ett antal .scss filer som är anpassad för olika enheter och upplösningar. För att testa vad som går att göra med sass innhäller layouten blan annat:
+* Layout är uppdelad i olika filer för att underlätta utvecklingsstrukturen (partials).
+* Många värden är sparade i varabler för att lättare kunna återanvändas.
+* Jag har dragit nytta av mäjligheten att nästla kod för att skapa specifika designanpassningar.
+* Andra bra möjligheter med sass är att kunna använda funktioner och att inkludera kod från andra klasser.
+* Det finns möjlighet att välja färgtema beroende på varabelvärde (if/else).
+* Sass har också en del färdiga funktioer som jag använt t.ex. darken() och lighten().
 
-Att byta namn på filerna var inget krav för denna uppgift men jag tycker det är snyggt att redan i filnamnet visa att detta är en minifierad fil. Likaså var det inget krav att komprimera bilder men jag tycker det är en oerhört användbar funktion så jag ville testa den.
-Sourcemaps är väldigt användbart vid felsökning och utveckling eftersom det går att se från vilken fil koden kommer ifrån.
+Titta på [webbsidan](https://webicon.se/tweug/dt173g/moment3/)
