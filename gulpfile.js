@@ -33,7 +33,7 @@ function copyHTML() {
         .pipe(dest("pub"))
 }
 
-// Concat and minify js files
+// Transpile into ES5, concat and minify js files
 function jsTask() {
     return src(files.jsPath)
         .pipe(sourcemaps.init())
