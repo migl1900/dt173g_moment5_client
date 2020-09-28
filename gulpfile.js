@@ -8,6 +8,7 @@ const sourcemaps = require("gulp-sourcemaps");
 const browserSync = require('browser-sync').create();
 const sass = require('gulp-sass'); 
 sass.compiler = require('node-sass');
+const babel = require("gulp-babel");
 
 // Paths to source files
 const files = {
@@ -36,6 +37,9 @@ function copyHTML() {
 function jsTask() {
     return src(files.jsPath)
         .pipe(sourcemaps.init())
+            .pipe(babel({
+                presets: ['@babel/preset-env']
+            }))
             .pipe(concat("main.js"))
             .pipe(uglify())
             .pipe(rename("main.min.js"))
