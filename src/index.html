@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <!--
-    Moment 3 - CSS-preprocessorer och SASS
+    Moment 5 - REST-webbtjänster med PHP
     DT173G, Webbutveckling III
     Michael Glimmerdahl
-    2020-09-21
+    2020-10-03
 -->
 <html lang="sv">
 
@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Kodchasan:wght@500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-    <title>Sassy</title>
+    <title>Avslutade och pågående kurser</title>
     <link rel="stylesheet" href="css/main.min.css">
 </head>
 
@@ -23,32 +23,66 @@
 
     <!-- Header with logo and nav -->
     <header>
-        <a href="#"><div class="logo"></div></a>
+        <div class="logo"><a href="#"><img src="images/avatar.png" alt="logo" class="center-image" /></a></div>
         <div id="hamburgerMenu" class="hamburger-menu active" onClick="toggleMenu()">&#9776;</div>
         <div id="closeMenu" class="hamburger-menu close-button" onClick="toggleMenu()">&times;</div>
         <nav id="navMenu">
             <ul id="menuContent" class="menu-content">
-                <li><a class="current" href="#">Home</a></li>
-                <li><a href="#">Service</a></li>
+                <li><a href="#">Hem</a></li>
+                <li><a class="current" href="#">Kurser</a></li>
                 <li><a href="#">Portfolio</a></li>
-                <li><a href="#">About us</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#">Om mig</a></li>
+                <li><a href="#">Kontakt</a></li>
             </ul>
         </nav>
     </header>
 
     <!-- Main content -->
     <div class="main">
-        <h1 class="center-text">Lend a helping hand!</h1>
-        <img src="images/index_bike.png" alt="Boy helping smaller boy on bicicle" class="center-image" />
-        <h2>Do you want to make a change?</h2>
-        <p>
-            Do you ever get the feeling you want to make a change but dont know what you can do to get started?
-        </p>
-        <p>
-            In that case you have come to the right place =)
-        </p>
-        <button>More info</button>
+        <h1 class="center-text">Kurser jag läst på Mittuniversitetet</h1>
+        <div>
+            <!-- In case of REST error messages -->
+            <div id="error" class="error-text"></div>
+
+            <!-- Show REST response message -->
+            <div id="tableMessage" class="success-text"></div>
+
+            <!-- Table for course print -->
+            <table class="course-table">
+                <thead>
+                    <tr>
+                        <th>Kurskod</th>
+                        <th>Kursnamn</th>
+                        <th>Progression</th>
+                        <th>Kursplan</th>
+                        <th>Inställningar</th>
+                    </tr>
+                </thead>
+
+                <!-- Element filled from REST loop -->
+                <tbody id="courses"></tbody>
+            </table>
+        </div>
+
+        <h2 id="formHeader" class="center-text">Lägg till kurser</h2>
+        <div class="form-container center">
+
+            <!-- Form used for both create and edit courses -->
+            <form id="courseForm" class="form">
+                <label for="code"><b>Kurskod:</b></label>
+                <input type="text" name="code" id="code" value="" required />
+                <label for="code"><b>Kursnamn:</b></label>
+                <input type="text" name="name" id="name" value="" required />
+                <label for="code"><b>Progression:</b></label>
+                <input type="text" name="progression" id="progression" value="" required />
+                <label for="code"><b>Kursplan:</b></label>
+                <input type="text" name="link" id="link" value="" required />
+                <input type="submit" id="saveCourse" value="Spara kurs">
+            </form>
+
+            <!-- Element to create abort button from JavaScript -->
+            <div id="abort"></div>
+        </div>
     </div>
 
     <!-- Footer -->

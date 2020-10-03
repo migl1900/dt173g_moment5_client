@@ -1,13 +1,11 @@
-# Babel
-### DT173G Moment 4
+# REST-webbtjänster med PHP
+### DT173G Moment 5
 ---
-Detta är fjärde uppgiften i kursen [Webbutveckling III](https://www.miun.se/utbildning/kursplaner-och-utbildningsplaner/Sok-kursplan/kursplan/?kursplanid=18690) på mittuniversitet HT -20.
+Detta är femte uppgiften i kursen [Webbutveckling III](https://www.miun.se/utbildning/kursplaner-och-utbildningsplaner/Sok-kursplan/kursplan/?kursplanid=18690) på mittuniversitet HT -20.
 
-Uppgiften går ut på att säkerställa funktionallitet i alla webbläsare även i de fall kod utvecklats med ECMAScript 6 eller högre.
-Nästan alla webbläsare klarar ECMAScript 5 så därför ska vi skapa en automatisk konvertering till ES5 med hjälp av Babel.
-För att lösa det har jag lagt till npm-paketen:
-* gulp-babel
-* @babel/core
-* @babel/preset-env
+Uppgiften går ut på att skapa en REST-webbtjänst med php och sedan skapa en klient som konsumerar webbtjänsten med full CRUD-möjlighet.
+REST-webbtjänsten innehåller de kurser jag läst hittills på Mittuniversitetet och lagras i MariaDB-databas. Php-koden är objektsorienterad med klasser för att ansluta till databasen samt för att hantera kurserna.
 
-För att testa är det bara att ladda ner detta repo och skriva gulp i terminalen.
+Klienten är utvecklad med html, sass och JavaScript och använder fetch() för att ansluta till webbtjänsten.
+
+Webbapplikationen går att testa på [https://webicon.se/tweug/dt173g/moment5/client](https://webicon.se/tweug/dt173g/moment5/client).

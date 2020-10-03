@@ -22,19 +22,6 @@ header {
     background-position: 20px 30px;
 }
 
-/* Show right color logo based on $themeColor value */
-@if $themeColor {
-    .logo {
-        @extend .logo-base;
-        background-image: url("../images/logo.png");
-    }
-} @else {
-    .logo {
-        @extend .logo-base;
-        background-image: url("../images/logo_yellow.png");
-    }
-}
-
 .main {
     @extend .center;
     max-width: $desktop;
@@ -42,6 +29,9 @@ header {
     p, h2, h3, h4, h5, h6 {
         text-shadow: 1px 1px color(base-background);
     }
+}
+.course-table {
+    width: 100%;
 }
 .center-image {
     @extend .center;

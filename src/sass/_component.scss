@@ -1,16 +1,27 @@
-/* Styling page components */
-button {
-    background-color: color(base-primary);
-    border: none;
-    padding: 0.7em 4em;
-    border-radius: 4px;
-    font-family: font(text);
-    font-size: font-size(h5);
-    text-transform: uppercase;
-    cursor: pointer;
+/* Styling form fields */
+.form input[type=text] {
+    width: 100%;
+    padding: 0.5em;
+    margin-bottom: 0.6em;
+    font-size: 1.1em;
+    border: 1px solid colors(dark-background);
+    box-sizing: border-box;
+}
 
-    @include mobile {
-        width: 100%;
-        padding: 0.5em 0;
-    }
+.form input[type=submit], button {
+    width: 100%;
+    font-size: font-size(h6);
+    background-color: color(base-primary);
+    color: #fff;
+    padding: 1em;
+    margin-top: 0.5em;
+    border: none;
+    cursor: pointer;
+}
+.form input[type=submit]:hover, button:hover {
+    background-color: color(dark-primary);
+}
+.form-container {
+    max-width: 25em;
+    padding: 1em;
 }

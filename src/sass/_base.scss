@@ -1,25 +1,14 @@
-/* Set color theme based on true or false */
-$themeColor: true;
-$colors: true;
-@if $themeColor {
-    $colors: (
-        base-background: #c4c4c4,
-        dark-background: darken(#c4c4c4, 80%),
-        base-primary: #ffa800,
-        dark-primary: darken(#ffa800, 5%),
-        base-text: #111111,
-        light-text: lighten(#111111, 90%)
-    );
-} @else {
-    $colors: (
-        base-background: #c4c4c4,
-        dark-background: darken(#c4c4c4, 80%),
-        base-primary: #edff00,
-        dark-primary: darken(#edff00, 5%),
-        base-text: #111111,
-        light-text: lighten(#111111, 90%)
-    );
-}
+$colors: (
+    base-background: #c4c4c4,
+    light-background: lighten(#c4c4c4, 20%),
+    dark-background: darken(#c4c4c4, 80%),
+    base-primary: #ffa800,
+    dark-primary: darken(#ffa800, 5%),
+    base-text: #111111,
+    light-text: lighten(#111111, 90%),
+    success: green,
+    error: red,
+);
 
 /* Font family variable */
 $font-stack: (
@@ -113,4 +102,14 @@ h5 {
 h6 {
     font-family: font(header);
     font-size: font-size(h6);
+}
+.success-text {
+    color: color(success);
+}
+.error-text {
+    color: color(error);
+}
+
+th {
+    text-align: left;
 }
