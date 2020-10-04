@@ -14,12 +14,12 @@
 header {
     position: relative;
 }
-.logo-base {
-    display: inline-block;
-    width: 270px;
-    height: 80px;
-    background-repeat: no-repeat;
-    background-position: 20px 30px;
+.logo {
+    padding-top: 1em;
+    @include mobile {
+        width: 60%;
+        margin: 0 auto;
+    }
 }
 
 .main {

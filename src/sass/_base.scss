@@ -1,6 +1,8 @@
 $colors: (
     base-background: #c4c4c4,
+    semilight-background: lighten(#c4c4c4, 8%),
     light-background: lighten(#c4c4c4, 20%),
+    semidark-background: darken(#c4c4c4, 20%),
     dark-background: darken(#c4c4c4, 80%),
     base-primary: #ffa800,
     dark-primary: darken(#ffa800, 5%),
@@ -18,7 +20,7 @@ $font-stack: (
 
 /* Font size varable */
 $font-sizes: (
-    h1: 4em,
+    h1: 4vw,
     h2: 3em,
     h3: 2.5em,
     h4: 1.8em,
@@ -110,6 +112,78 @@ h6 {
     color: color(error);
 }
 
+/* table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+tr:nth-of-type(odd) {
+background: color(light-background);
+}
+tr:nth-of-type(even) {
+background: color(semilight-background);
+}
+
 th {
-    text-align: left;
+background: color(dark-background);
+color: color(light-text);
+font-weight: bold;
+text-align: left;
+}
+
+td, th {
+padding: 0.8em;
+border: 1px solid color(dark-background);
+text-align: left;
+}
+@include mobile {
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+    /* Hide table headers (but not display: none;, for accessibility) */
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    tr {
+        border: 1px solid color(dark-background);
+        margin-bottom: 1em;
+    }
+    td {
+        /* Behave  like a "row" */
+        border: none;
+        border-bottom: 1px solid color(semidark-background);
+        position: relative;
+        padding-left: 50%;
+    }
+    td:before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 0.8em;
+        left: 0.8em;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+    }
+    /*
+        Label the data
+        */
+    .course-table td:nth-of-type(1):before {
+        content: "Kurskod:";
+    }
+    .course-table td:nth-of-type(2):before {
+        content: "Kursnamn:";
+    }
+    .course-table td:nth-of-type(3):before {
+        content: "Progression:";
+    }
+    .course-table td:nth-of-type(4):before {
+        content: "Kursplan:";
+    }
+    .course-table td:nth-of-type(5):before {
+        content: "Inställningar:";
+    }
 }
