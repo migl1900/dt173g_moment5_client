@@ -30,8 +30,8 @@ $font-sizes: (
 
 /* Breaking points varables */
 $desktop: 1200px;
-$tablet: 768px;
-$mobile: 576px;
+$tablet: 1023px;
+$mobile: 767px;
 
 /* Functions for easy access to sass maps */
 @function color($color-name) {
