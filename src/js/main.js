@@ -25,7 +25,6 @@ function getAllCourses() {
     fetch("https://webicon.se/tweug/dt173g/moment5/rest/index.php")
     .then(resp => resp.json())
     .then(data => {
-        console.log(data);
         data.forEach(course => {
             coursesEl.innerHTML += `
                 <tr>
