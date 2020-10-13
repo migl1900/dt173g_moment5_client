@@ -14,17 +14,18 @@ let formButton          = document.getElementById("saveCourse");
 
 // Event listeners
 window.addEventListener("load", getAllCourses);
-courseForm.addEventListener("submit", addCourse);
+courseForm.addEventListener("submit", addCourse, false);
 
 // Functions
 
 // REST request using GET printing all courses
 function getAllCourses() {
     coursesEl.innerHTML = "";
-    
+
     fetch("https://webicon.se/tweug/dt173g/moment5/rest/index.php")
     .then(resp => resp.json())
     .then(data => {
+        console.log(data);
         data.forEach(course => {
             coursesEl.innerHTML += `
                 <tr>
@@ -59,7 +60,7 @@ function getCourse(id) {
         formButton.value = "Spara ändring";
         
         // Changing event listener to use editCourse function
-        courseForm.removeEventListener("submit", addCourse);
+        courseForm.removeEventListener("submit", addCourse, false);
         courseForm.addEventListener("submit", function(e) {
             editCourse(id);
         });
@@ -104,6 +105,7 @@ function addCourse() {
     }
 
     fetch("https://webicon.se/tweug/dt173g/moment5/rest/index.php", {
+        mode: "cors",
         method: "POST",
         body: JSON.stringify(course),
     })
