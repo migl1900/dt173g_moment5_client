@@ -1,4 +1,3 @@
-"use strict"
 
 // Variables
 let coursesEl           = document.getElementById("courses");
@@ -11,6 +10,7 @@ let nameInput           = document.getElementById("name");
 let progressionInput    = document.getElementById("progression");
 let linkInput           = document.getElementById("link");
 let formButton          = document.getElementById("saveCourse");
+let buttonPlacement     = document.getElementById("abort");
 
 // Event listeners
 window.addEventListener("load", getAllCourses);
@@ -32,7 +32,7 @@ function getAllCourses() {
                     <td>${course.name}</td>
                     <td>${course.progression}</td>
                     <td><a href="${course.link}">Läs mer</a></td>
-                    <td><a href="#" onClick="getCourse(${course.id})">Ändra</a> | <a href="#" onClick="deleteCourse(${course.id})">Radera</td>
+                    <td><a href="javascript:void(0)" onClick="getCourse(${course.id})">Ändra</a> | <a href="javascript:void(0)" onClick="deleteCourse(${course.id})">Radera</td>
                 </tr>
             `;
         })
@@ -60,16 +60,20 @@ function getCourse(id) {
         
         // Changing event listener to use editCourse function
         courseForm.removeEventListener("submit", addCourse, false);
-        courseForm.addEventListener("submit", function(e) {
-            editCourse(id);
-        });
+        courseForm.addEventListener("submit", function(event) {
+            editCourse(id, event);
+        }, false);
 
         // Creating a button to offer abort feature
+        buttonPlacement.innerHTML = "";
         let button = document.createElement("button");
         button.innerHTML = "Avbryt";
-        let buttonPlacement = document.getElementById("abort");
         buttonPlacement.appendChild(button);
         button.addEventListener ("click", function() {
+            codeInput.value = "";
+            nameInput.value = "";
+            progressionInput.value = "";
+            linkInput.value = "";
             location.reload();
         });
     })
@@ -91,56 +95,59 @@ function deleteCourse(id) {
 }
 
 // REST request using POST header to add new course
-function addCourse() {
+function addCourse(event) {
     let code = codeInput.value;
     let name = nameInput.value;
     let progression = progressionInput.value;
     let link = linkInput.value;
-    let course = {
+    let newCourse = {
         "code": code,
         "name": name,
         "progression": progression,
         "link": link 
     }
-
+    event.preventDefault();
     fetch("https://webicon.se/tweug/dt173g/moment5/rest/index.php", {
-        mode: "cors",
         method: "POST",
-        body: JSON.stringify(course),
+        body: JSON.stringify(newCourse),
     })
     .then(resp => resp.json())
     .then(data => {
+        console.log("success: " + data);
         tableMessageEL.innerHTML = data.message;
         getAllCourses();
     })
     .catch(error => {
+        console.log("Create error: " + error);
         errorEl.innerHTML = error;
     })
 }
 
 // REST request using PUT header to edit existing course
-function editCourse(id) {
+function editCourse(id, event) {
     let code = codeInput.value;
     let name = nameInput.value;
     let progression = progressionInput.value;
     let link = linkInput.value;
-    let course = {
+    let editCourse = {
         "code": code,
         "name": name,
         "progression": progression,
         "link": link 
     }
 
+    event.preventDefault();
     fetch("https://webicon.se/tweug/dt173g/moment5/rest/index.php?id=" + id, {
         method: "PUT",
-        body: JSON.stringify(course),
+        body: JSON.stringify(editCourse),
     })
     .then(resp => resp.json())
     .then(data => {
         tableMessageEL.innerHTML = data.message;
-        getAllCourses();
+        window.location.href = "index.html";
     })
     .catch(error => {
+        console.log("Edit error: " + error);
         errorEl.innerHTML = error;
     })
 }
