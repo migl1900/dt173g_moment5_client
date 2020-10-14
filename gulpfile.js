@@ -37,11 +37,11 @@ function copyHTML() {
 function jsTask() {
     return src(files.jsPath)
         .pipe(sourcemaps.init())
-            //.pipe(babel({
-            //    presets: ['@babel/preset-env']
-            //}))
+            .pipe(babel({
+                presets: ['@babel/preset-env']
+            }))
             .pipe(concat("main.js"))
-            //.pipe(uglify())
+            .pipe(uglify())
             .pipe(rename("main.min.js"))
         .pipe(sourcemaps.write())
         .pipe(dest("pub/js"))

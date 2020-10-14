@@ -113,12 +113,10 @@ function addCourse(event) {
     })
     .then(resp => resp.json())
     .then(data => {
-        console.log("success: " + data);
         tableMessageEL.innerHTML = data.message;
         getAllCourses();
     })
     .catch(error => {
-        console.log("Create error: " + error);
         errorEl.innerHTML = error;
     })
 }
@@ -147,7 +145,6 @@ function editCourse(id, event) {
         window.location.href = "index.html";
     })
     .catch(error => {
-        console.log("Edit error: " + error);
         errorEl.innerHTML = error;
     })
 }
